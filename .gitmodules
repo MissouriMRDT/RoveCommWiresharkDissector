@@ -1,0 +1,3 @@
+[submodule "RoveComm_Base"]
+	path = RoveComm_Base
+	url = https://github.com/MissouriMRDT/RoveComm_Base.git
