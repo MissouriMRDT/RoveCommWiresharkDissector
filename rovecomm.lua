@@ -821,8 +821,6 @@ for data_type_number = 0, 8 do
     table.insert(rove_protocol.fields, DATA_TYPE_FIELDS[data_type_number])
 end
 
-print(DATA_TYPE_FIELDS)
-
 local expert_bad_data_id = ProtoExpert.new(
     "BadDataId",
     "The encoded data_id does not exist in the manifest",
@@ -889,7 +887,6 @@ function rove_protocol.dissector(buffer, pinfo, tree)
         local data_type_size = DATA_TYPE_SIZES[data_type_number];
         local actual_data_length = buffer:reported_len() - 6
         local expected_data_length = data_type_size * data_count_number
-        print(actual_data_length, expected_data_length)
         local data_subtree = subtree:add(data_field, buffer(6));
         for i = 0, data_count_number - 1 do
             data_subtree:add(DATA_TYPE_FIELDS[data_type_number], buffer(6 + i * data_type_size, data_type_size));
